@@ -7,6 +7,8 @@ target 'umanager_hybrid' do
 
   # Pods for umanager_hybrid
   pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
+
   target 'umanager_hybridTests' do
     inherit! :search_paths
     # Pods for testing
