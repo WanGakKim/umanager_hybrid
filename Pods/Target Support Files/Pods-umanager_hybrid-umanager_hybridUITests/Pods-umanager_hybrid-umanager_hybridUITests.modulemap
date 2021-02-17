@@ -1,0 +1,6 @@
+framework module Pods_umanager_hybrid_umanager_hybridUITests {
+  umbrella header "Pods-umanager_hybrid-umanager_hybridUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>376298678681-bpvpkm1675kg53003aq0adct93ecrg92.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.376298678681-bpvpkm1675kg53003aq0adct93ecrg92</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>376298678681-1f0ah9mvfc8fonqm4p0coumcp76o9ihq.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBZGnjrVs77G_O07zswFiAJEBXH7nGp2q4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>376298678681</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.witty.umanager-hybrid</string>
+	<key>PROJECT_ID</key>
+	<string>umanager-79c47</string>
+	<key>STORAGE_BUCKET</key>
+	<string>umanager-79c47.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:376298678681:ios:a10c58afb3b9d32bc88b08</string>
+	<key>DATABASE_URL</key>
+	<string>https://umanager-79c47.firebaseio.com</string>
+</dict>
+</plist>
