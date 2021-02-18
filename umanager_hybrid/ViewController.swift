@@ -91,4 +91,8 @@ extension ViewController: WKUIDelegate, WKNavigationDelegate{
     public func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
         webView.reload()
     }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.title = webView.title
+    }
 }

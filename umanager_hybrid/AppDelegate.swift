@@ -8,10 +8,11 @@
 
 
 import UIKit
-import Firebase
+import FirebaseCore
+import FirebaseMessaging
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
     
@@ -19,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         /**************************** Push service start *****************************/
         FirebaseApp.configure()
+        UNUserNotificationCenter.current().delegate = self
         
         // iOS 10 support
         if #available(iOS 10, *) {
@@ -38,12 +40,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-         
-        let deviceTokenString = deviceToken.reduce("", { $0 + String(format: "$02X", $1)})
-        
+        let deviceTokenString = deviceToken.map { String(format: "%02x", $0) }.joined()
+//        let deviceTokenString = deviceToken.reduce("", { $0 + String(format: "$02X", $1)})
+        print("APNS device Token: \(deviceToken)")
         print("APNS device Token: \(deviceTokenString)")
-        
-        
+        Messaging.messaging().apnsToken = deviceToken
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -68,6 +69,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
-    
+
 }
 
+extension AppDelegate: MessagingDelegate{
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("Error fetching FCM registration token: \(error)")
+            } else if let token = token {
+                print("FCM registration token: \(token)")
+                //            self.fcmRegTokenMessage.text  = "Remote FCM registration token: \(token)"
+            }
+        }
+        
+        let dataDict:[String: String] = ["token": fcmToken ?? ""]
+        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+        // TODO: If necessary send token to application server.
+        // Note: This callback is fired at each app startup and whenever a new token is generated.
+    }
+    
+}
